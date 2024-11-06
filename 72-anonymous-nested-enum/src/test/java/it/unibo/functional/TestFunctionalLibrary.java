@@ -36,6 +36,8 @@ class TestFunctionalLibrary {
         );
     }
 
+    
+
 
     @Test
     void testFlatten() {
@@ -45,6 +47,7 @@ class TestFunctionalLibrary {
                 return List.of(input, input, input);
             }
         };
+    
         final var base = transform(LOREM_IPSUM, triplicator);
         assertEquals(flattenTransform(LOREM_IPSUM, triplicator), flatten(base));
     }
