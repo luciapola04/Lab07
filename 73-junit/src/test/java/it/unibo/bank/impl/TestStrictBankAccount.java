@@ -5,6 +5,8 @@ import it.unibo.bank.api.BankAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static it.unibo.bank.impl.SimpleBankAccount.MANAGEMENT_FEE;
+import static it.unibo.bank.impl.StrictBankAccount.TRANSACTION_FEE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -44,8 +46,9 @@ class TestStrictBankAccount {
     @Test
     public void testManagementFees() {
         bankAccount.deposit(mRossi.getUserID(), AMOUNT);
+        assertEquals(AMOUNT, bankAccount.getBalance());
         bankAccount.chargeManagementFees(mRossi.getUserID());
-        assertEquals(94.9, bankAccount.getBalance());
+        assertEquals(AMOUNT - TRANSACTION_FEE - MANAGEMENT_FEE, bankAccount.getBalance());
     }
 
     /**
