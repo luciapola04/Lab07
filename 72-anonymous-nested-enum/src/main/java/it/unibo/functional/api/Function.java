@@ -26,7 +26,7 @@ public interface Function<I, O> {
         return new Function<T,T>() {
             
             @Override
-            public T call(T input) {
+            public T call(final T input) {
                 return input;
             }
             

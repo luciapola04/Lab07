@@ -38,7 +38,7 @@ public final class MonthSorterNested implements MonthSorter {
 
         private final int days;
 
-        private Month(int days) {
+        Month(int days) {
             this.days = days;
         }
 
@@ -57,33 +57,26 @@ public final class MonthSorterNested implements MonthSorter {
                     match = mo;
                 }
             }
-
             if(match == null) {
                 throw new IllegalArgumentException("No matches founded for " + m);
             }
             return match;
-        }
-
-    
+        }    
     }
 
     private static final class SortByMonthOrder implements Comparator<String> {
-
         @Override
         public int compare(final String o1, final String o2) {
             return Month.fromString(o1).compareTo(Month.fromString(o2));
         }
-
     }
 
     private static final class SortByDays implements Comparator<String> {
-
         @Override
         public int compare(final String o1, final String o2) {
             Month m1 = Month.fromString(o1);
             Month m2 = Month.fromString(o2);
             return Integer.compare(m1.getDays(), m2.getDays());
         }
-
     }
 }
