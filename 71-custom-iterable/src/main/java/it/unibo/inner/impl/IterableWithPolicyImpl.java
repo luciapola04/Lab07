@@ -13,7 +13,6 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
     
     public IterableWithPolicyImpl(final T[] array) {
         this(array, new Predicate<T>(){
-
             @Override
             public boolean test(T elem) {
                 return true;
@@ -36,10 +35,13 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
         this.filter = filter;
     }
 
+    @Override
+    public String toString() {
+        return this.array.toString();
+    }
+
     class ArrayIterator implements Iterator<T> {
-
         int current = 0;
-
         @Override
         public boolean hasNext() {
             while(current < array.length && !filter.test(array[current])) {
@@ -57,5 +59,4 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
             }
         }
     }
-
 }
